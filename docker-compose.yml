@@ -1,0 +1,47 @@
+version: '3.4'
+
+services:
+  client:
+    build:
+      context: ./client 
+      dockerfile: Dockerfile
+    container_name: client_app
+    command: "npm start"
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./client:/var/www/client"
+    networks:
+      - service_net 
+    image: Kahare/client_side:v1.0.0 #Tag the client image
+
+  backend:
+    build:
+      context: ./backend 
+      dockerfile: Dockerfile
+    container_name: backend_app
+    command: "npm start"
+    ports:
+      - "5000:5000"
+    volumes:
+      - "./backend:/var/www/backend"
+    networks:
+      - service_net 
+    image: Kahare/client_side:v1.0.0 #Tag the backend image
+  
+  yolo.db:
+    image: mongo:latest
+    container_name: yolo_database
+    environment:
+     MONGO_INITDB_ROOT_USERNAME: admin
+     MONGO_INITDB_ROOT_PASSWORD: password 
+     MONGO_INITDB_DATABASE: local 
+    ports:
+      - "0.0.0.0:27018:27017"
+    networks:
+      - service_net
+
+networks:
+  service_net:
+    driver: bridge
+
