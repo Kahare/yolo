@@ -1,17 +1,14 @@
-# Use nginx as the base image
-FROM node:14-alpine
 
-#Set working directory
+FROM node:14-alpine
+ 
 WORKDIR /backend/app
 
-# Copy built frontend files to nginx default directory
 COPY package*.json ./
 
-#Install dependencies
 RUN npm install
 
-#Copy the rest of the application code from root to workdir
 COPY . .
 
-# Expose port 5000 for the backend
 EXPOSE 5000
+
+CMD [ "npm", "start" ]
