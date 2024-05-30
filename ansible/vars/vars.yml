@@ -1,0 +1,9 @@
+#vars/main.yaml 
+
+docker_compose_version: 
+client_image: 
+backend_image: 
+mongo_image: "mongo:latest"
+mongo_root_username:  "admin"
+mongo_root_password: "password"
+mongo_database: "local"
