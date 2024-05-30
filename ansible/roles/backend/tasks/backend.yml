@@ -9,7 +9,7 @@
 #Configuring the containers 
 - name: Build & start backend container 
   docker_container:
-     name: server_backend 
+     name:  
      image: "{{ backend_image }}"
      state: started 
      restart_policy: always 
@@ -21,4 +21,4 @@
         - name: service_net #confirm this 
      env:
       MONGODB_URL: "mongodb://yolo_db:27018"
-      DB_NAME: yolo_db #change this
+      DB_NAME:  #change this
