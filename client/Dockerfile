@@ -1,17 +1,23 @@
-# Use nginx as the base image
-FROM node:14-alpine
+# Stage 1: Build the apllication(using multi stage builds)
+FROM node:14-alpine AS build 
 
-#Set working directory
 WORKDIR /client/app
 
-# Copy built frontend files to nginx default directory
 COPY package*.json ./
 
-#Install dependencies
 RUN npm install
 
-#Copy the rest of the application code from root to workdir
 COPY . .
 
-# Expose port 3000 for the client
+RUN npm run build
+
+#Stage 2:Serve the application
+FROM node:14-alpine as main 
+
+WORKDIR /client/app
+
+COPY --from=build /client/app/. .
+
 EXPOSE 3000
+
+CMD ["npm", "start"]
