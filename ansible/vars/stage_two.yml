@@ -1,0 +1,10 @@
+---
+
+client_image: #Add client image
+backend_image: #Add backend image
+mongo_image: "mongo:latest"
+mongo_root_username:  "admin"
+mongo_root_password: "password"
+mongo_database: "local"
+
+env: development
