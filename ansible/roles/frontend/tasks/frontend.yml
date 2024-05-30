@@ -1,1 +1,19 @@
+---
 
+- name: Clone Repository 
+  git: 
+    repo: 
+    dest: /var/www/client
+
+- name: Build & start client container 
+  docker_container:
+     name: client_app
+     image: "{{client_image}}"
+     state: started
+     restart_policy: always 
+     ports: 
+       - "3001:3001"
+     volumes: 
+        - /var/www/client:/var/www/client
+     networks: 
+        - name: service_net
