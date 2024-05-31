@@ -1,0 +1,7 @@
+---
+#Create handlers to manage backend service restarts 
+
+- name: Restart backend container 
+  docker_container: 
+    name: #Added backend_container
+    state: restarted 
