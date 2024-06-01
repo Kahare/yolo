@@ -3,13 +3,15 @@
 #Cloning repo  
 - name: Clone Repository
   git:
-    repo: 
+    repo: #Add repo
     dest: "/var/www/backend"
+  notify:
+    - Restart backend container
 
 #Configuring the containers 
 - name: Build & start backend container 
   docker_container:
-     name:  
+     name: #Add container_name
      image: "{{ backend_image }}"
      state: started 
      restart_policy: always 
@@ -17,8 +19,9 @@
        - "5000:5000"
      volumes: 
        - /var/www/backend:/var/www/backend
+     networks_cli_compatible: yes
      networks:
-        - name: service_net #confirm this 
+        - name: service_net
      env:
       MONGODB_URL: "mongodb://yolo_db:27018"
-      DB_NAME:  #change this
+      DB_NAME: #Add DB name
