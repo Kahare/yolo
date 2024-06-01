@@ -1,13 +1,15 @@
 ---
 
+# Database Role
 - name: Start MongoDB container
   docker_container:
-    name: 
+    name: #Add container_name
     image: "{{ mongo_image }}"
     state: started
     restart_policy: always
     ports:
-      - "0.0.0.0:27018:27017"
+      - "0.0.0.0:27018:27017" #Confirm this
+    networks_cli_compatible: yes
     networks:
       - name: service_net
     env:
