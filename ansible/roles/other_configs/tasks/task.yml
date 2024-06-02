@@ -1,0 +1,16 @@
+---
+
+# other_configs
+#Setting up load balancer 
+- name: Install HAProxy
+  apt:
+    name: haproxy
+    state: present 
+
+#Configure HAproxy
+- name: Configure HAProxy 
+  template:
+    src: haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg 
+  notify: 
+    - Restart HAProxy

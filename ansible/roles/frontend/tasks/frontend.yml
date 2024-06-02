@@ -1,19 +1,22 @@
----
-
+--- 
+#Frontend Role 
 - name: Clone Repository 
   git: 
-    repo: 
+    repo: #Add repo
     dest: /var/www/client
+  notify:
+    - Restart client container
 
 - name: Build & start client container 
   docker_container:
-     name: client_app
+     name: client_app 
      image: "{{client_image}}"
      state: started
      restart_policy: always 
      ports: 
-       - "3001:3001"
+       - "3000:3000"
      volumes: 
         - /var/www/client:/var/www/client
+     networks_cli_compatible: yes
      networks: 
         - name: service_net

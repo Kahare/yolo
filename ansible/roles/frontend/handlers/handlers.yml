@@ -1,0 +1,7 @@
+---
+#Create handlers to manage frontend service restarts 
+
+- name: Restart client container 
+  docker_container: 
+    name: #Add the client container
+    state: restarted 
