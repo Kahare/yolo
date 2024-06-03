@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: kahare/backend_app:v1.1.2
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: backend-volume
+          mountPath: /var/www/backend
+      volumes:
+      - name: backend-volume
+        hostPath:
+          path: ./backend
