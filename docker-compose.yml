@@ -13,7 +13,7 @@ services:
       - "./client:/var/www/client"
     networks:
       - service_net 
-    image: Kahare/client_side:v1.0.0 #Tag the client image
+    image: Kahare/client_side:v1.0.0 
 
   backend:
     build:
@@ -27,7 +27,7 @@ services:
       - "./backend:/var/www/backend"
     networks:
       - service_net 
-    image: Kahare/client_side:v1.0.0 #Tag the backend image
+    image: Kahare/client_side:v1.0.0 
   
   yolo.db:
     image: mongo:latest
