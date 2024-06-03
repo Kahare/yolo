@@ -3,7 +3,7 @@
 # Database Role
 - name: Start MongoDB container
   docker_container:
-    name: #Add container_name
+    name: yolo_database
     image: "{{ mongo_image }}"
     state: started
     restart_policy: always
