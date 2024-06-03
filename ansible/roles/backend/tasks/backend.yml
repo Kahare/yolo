@@ -11,7 +11,7 @@
 #Configuring the containers 
 - name: Build & start backend container 
   docker_container:
-     name: #Add container_name
+     name: backend_app
      image: "{{ backend_image }}"
      state: started 
      restart_policy: always 
