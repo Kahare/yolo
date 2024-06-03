@@ -2,7 +2,7 @@
 #Frontend Role 
 - name: Clone Repository 
   git: 
-    repo: #Add repo
+    repo: https://github.com/Kahare/yolo.git
     dest: /var/www/client
   notify:
     - Restart client container
