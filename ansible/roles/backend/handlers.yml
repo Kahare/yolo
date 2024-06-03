@@ -3,5 +3,5 @@
 
 - name: Restart backend container 
   docker_container: 
-    name: #Added backend_container
+    name: backend_app
     state: restarted 
