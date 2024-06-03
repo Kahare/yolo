@@ -24,4 +24,4 @@
         - name: service_net
      env:
       MONGODB_URL: "mongodb://yolo_db:27018"
-      DB_NAME: #Add DB name
+      DB_NAME: yolo_db
