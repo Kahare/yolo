@@ -3,5 +3,5 @@
 
 - name: Restart client container 
   docker_container: 
-    name: #Add the client container
+    name: client_app
     state: restarted 
