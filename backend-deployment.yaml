@@ -6,21 +6,21 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: backend
+      app: server-backend
   template:
     metadata:
       labels:
         app: backend
     spec:
       containers:
-      - name: backend
-        image: kahare/backend_app:v1.1.2
-        ports:
-        - containerPort: 5000
-        volumeMounts:
-        - name: backend-volume
-          mountPath: /var/www/backend
-      volumes:
-      - name: backend-volume
-        hostPath:
-          path: ./backend
+        - name: backend
+          image: kahare/backend_app:v1.1.2
+          resources:
+            limits:
+              memory: 100Mi
+              cpu: 100m
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MONGODB_URI
+              value: mongodb://yolo-db-service:27017/
