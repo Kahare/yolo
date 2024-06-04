@@ -21,6 +21,8 @@ spec:
               cpu: 100m
           ports:
             - containerPort: 5000
+            tty: true 
+          stdin: true
           env:
-            - name: MONGODB_URI
-              value: mongodb://yolo-db-service:27017/
+            - name: REACT_APP_API_URL
+              value: http://yolo-db-service:80
