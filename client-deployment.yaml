@@ -21,7 +21,9 @@ spec:
               cpu: 100m
           ports:
             - containerPort: 3000
+            tty: true 
+          stdin: true
           env:
             - name: REACT_APP_API_URL
-              value: http://server-backend-service:80
+              value: http://backend-service:80
 
