@@ -4,7 +4,7 @@ I followed a typical Git workflow for making and managing changes to the project
 - Created a new branch for my changes.
 - Made changes to the Dockerfiles, docker-compose.yml, and any other necessary files.
 - Committed my changes with clear and descriptive commit messages.
-- Pushed the branch to GitHub and submitted a pull request for review.
+- followed the Git feature branch workflow for development. Features or fixes were developed on separate branches, then merged into the main branch via pull requests after code review and testing.
 
 ## Base Image Selection:
 1. **Client**: For the web application component, I chose the official Node:14-alpine base image. 
@@ -23,8 +23,9 @@ I used the default bridge network provided by Docker Compose for communication b
 
 I defined a volume for the MongoDB service to ensure persistence of data. This volume is mounted to a directory within the MongoDB container where the database stores its data. This ensures that data added to the database persists even if the container is stopped or restarted.
 
-## Testing and Debugging:
-I tested the containerized application locally using Docker Compose. I am unable to verify that the web application functions correctly and that data persistence works as expected. I was unable to debugged any issues that arose during testing.
+**Kubernetes Deployment**:
+   - I opted to use Deployment objects for managing our application's deployment. Deployments are suitable for stateless applications, allowing for easy scaling and rolling updates.
+   - For storage solutions, we chose to use StatefulSets where state persistence is crucial. StatefulSets offer stable, unique network identifiers and stable storage, which is essential for applications requiring persistent storage.
 
-
-
+**Good Practices for Docker Image Tag Naming**:
+   - We adhered to Docker image tag naming standards for ease of identification and personalization of images and containers. Tags were versioned using semantic versioning (e.g., `v1.1.2`) and included relevant information such as build numbers or commit hashes for traceability.
